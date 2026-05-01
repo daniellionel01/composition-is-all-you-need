@@ -13,8 +13,8 @@ export function App() {
           Composition is all you need
         </a>
         <div className="nav-links">
-          <a href="#problem">Problem</a>
-          <a href="#pattern">Pattern</a>
+          <a href="#problem">Before</a>
+          <a href="#pattern">Composition</a>
           <a href="#demos">Examples</a>
         </div>
       </nav>
@@ -61,24 +61,9 @@ export function App() {
         </aside>
       </section>
 
-      <section className="metric-rail" aria-label="Demo summary">
-        <div>
-          <span className="metric-value">4</span>
-          <span className="metric-label">composer trees</span>
-        </div>
-        <div>
-          <span className="metric-value">0</span>
-          <span className="metric-label">editing mode flags</span>
-        </div>
-        <div>
-          <span className="metric-value">1</span>
-          <span className="metric-label">primitive set</span>
-        </div>
-      </section>
-
       <section className="section-heading" id="problem">
-        <p className="eyebrow">Problem</p>
-        <h2>The mess starts when props become product logic.</h2>
+        <p className="eyebrow">Before</p>
+        <h2>The API shape we are avoiding.</h2>
         <p>
           The parent already knows the shape it wants. A monolith makes the child rediscover that shape through flags,
           branches, and escape hatches.
@@ -92,8 +77,8 @@ export function App() {
 
       <section className="pattern-panel" id="pattern">
         <div className="pattern-copy">
-          <p className="eyebrow">Pattern</p>
-          <h2>Keep the primitives. Change the tree.</h2>
+          <p className="eyebrow">Composition</p>
+          <h2>The resulting code is the point.</h2>
           <p>
             The provider owns the state model. The frame, input, footer, dropzone, and actions stay small. Each use case
             chooses the pieces it needs and leaves the rest out.
@@ -120,7 +105,7 @@ export function App() {
 
       <section className="section-heading demos-heading" id="demos">
         <p className="eyebrow">Examples</p>
-        <h2>The variants are visible in the markup.</h2>
+        <h2>Four resulting composer trees.</h2>
         <p>
           Editing has no dropzone. Forwarding lifts actions outside the frame. Threads get one extra checkbox instead of
           a new mode flag.

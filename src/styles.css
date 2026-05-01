@@ -235,40 +235,6 @@ pre {
   tab-size: 2;
 }
 
-.metric-rail {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
-  padding: 28px 0 0;
-  box-shadow: inset 0 1px var(--line);
-}
-
-.metric-rail > div {
-  display: grid;
-  grid-template-columns: auto minmax(90px, 1fr);
-  gap: 18px;
-  align-items: end;
-}
-
-.metric-value {
-  color: var(--ink);
-  font-size: clamp(2.6rem, 5vw, 5.6rem);
-  font-weight: 820;
-  line-height: 0.84;
-  letter-spacing: -0.07em;
-  font-variant-numeric: tabular-nums;
-}
-
-.metric-label {
-  max-width: 132px;
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 720;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 .section-heading {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.5fr);
@@ -707,14 +673,9 @@ pre {
     font-size: clamp(54px, 18vw, 82px);
   }
 
-  .metric-rail,
   .grid.two,
   .demo-grid {
     grid-template-columns: 1fr;
-  }
-
-  .metric-rail {
-    gap: 18px;
   }
 
   .pattern-panel,
