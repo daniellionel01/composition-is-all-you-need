@@ -1,6 +1,8 @@
 # Composition Is All You Need — practical React examples
 
-This repo reconstructs the code ideas from Fernando Rojo's React Universe 2025 talk **“Composition Is All You Need”** using the local transcript/video files.
+This repo reconstructs the code ideas from Fernando Rojo's React Universe 2025 talk **“Composition Is All You Need”**.
+
+Watch the original talk: https://www.youtube.com/watch?v=4KvbVq3Eg5w
 
 The talk contrasts two approaches:
 

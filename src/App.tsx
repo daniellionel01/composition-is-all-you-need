@@ -29,6 +29,9 @@ export function App() {
           </p>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="primary-button" href="#demos">Open the examples</a>
+            <a className="text-link" href="https://www.youtube.com/watch?v=4KvbVq3Eg5w" target="_blank" rel="noreferrer">
+              Watch the original talk
+            </a>
             <a className="text-link" href="#problem">Start with the failure mode</a>
           </div>
         </div>
@@ -175,7 +178,13 @@ export function App() {
       </section>
 
       <footer className="page-footer">
-        <p>Built from the talk notes in this repo. The code stays small so the composition boundary is easy to see.</p>
+        <p>
+          Built from the talk notes in this repo. Watch Fernando Rojo's original React Universe talk,{' '}
+          <a href="https://www.youtube.com/watch?v=4KvbVq3Eg5w" target="_blank" rel="noreferrer">
+            "Composition Is All You Need"
+          </a>
+          .
+        </p>
       </footer>
     </main>
   );
