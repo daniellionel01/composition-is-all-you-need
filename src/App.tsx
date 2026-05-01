@@ -12,13 +12,9 @@ export function App() {
         <p className="eyebrow">React Universe 2025 talk reconstruction</p>
         <h1>Composition Is All You Need</h1>
         <p>
-          Practical React examples based on the transcript and extracted screenshots. The examples model the talk's
-          core idea: render different component trees instead of growing one component with boolean props.
+          Practical React examples that model the talk's core idea: render different component trees instead of growing
+          one component with boolean props.
         </p>
-        <div className="hero-links">
-          <a href="/docs/slides/manifest.json">Screenshot manifest</a>
-          <a href="/docs/contact-sheets/selected_01.jpg">Contact sheet</a>
-        </div>
       </section>
 
       <section className="grid two">

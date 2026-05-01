@@ -9,9 +9,6 @@ The talk contrasts two approaches:
 
 ## What is included
 
-- `docs/slides/` — 62 extracted screenshots from the MP4, named by timestamp/topic.
-- `docs/contact-sheets/` — quick review sheets for the selected screenshots.
-- `docs/slide-index.md` — timestamped screenshot index.
 - `src/examples/` — the anti-pattern examples from the opening of the talk.
 - `src/composer/` — reusable composer primitives and context.
 - `src/composers/` — practical implementations:
