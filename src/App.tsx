@@ -10,39 +10,33 @@ export function App() {
     <main className="page">
       <nav className="topbar" aria-label="Page sections">
         <a className="brand" href="#top" aria-label="Composition Is All You Need home">
-          <span className="brand-mark" aria-hidden="true">C</span>
-          <span>Composition lab</span>
+          Composition is all you need
         </a>
         <div className="nav-links">
-          <a href="#problem">The trap</a>
-          <a href="#pattern">The pattern</a>
-          <a href="#demos">Demos</a>
+          <a href="#problem">Problem</a>
+          <a href="#pattern">Pattern</a>
+          <a href="#demos">Examples</a>
         </div>
       </nav>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">React Universe 2025, rebuilt in code</p>
-          <h1>Stop teaching one component every job.</h1>
+          <p className="eyebrow">React Universe 2025, reconstructed</p>
+          <h1>Render the tree you mean.</h1>
           <p className="lede">
-            This demo rebuilds Fernando Rojo's composer examples as a small React app. The point is blunt: render the
-            tree you mean. Don't pack one API with booleans and hope the branches stay readable.
+            A small React demo from Fernando Rojo's talk. The composer variants stay readable because each one owns its
+            tree instead of feeding another mode flag into the same component.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
-            <a className="primary-button" href="#demos">Try the composed examples</a>
-            <a className="text-link" href="#problem">See the boolean trap</a>
+            <a className="primary-button" href="#demos">Open the examples</a>
+            <a className="text-link" href="#problem">Start with the failure mode</a>
           </div>
         </div>
 
         <aside className="hero-panel" aria-label="Before and after code comparison">
-          <div className="panel-chrome" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
           <div className="split-code">
             <div className="code-sample code-sample--bad">
-              <div className="sample-label">Before</div>
+              <div className="sample-label">Flag-driven</div>
               <pre>{`<Composer
   isThread
   isEditingMessage={false}
@@ -51,7 +45,7 @@ export function App() {
 />`}</pre>
             </div>
             <div className="code-sample code-sample--good">
-              <div className="sample-label">After</div>
+              <div className="sample-label">Tree-driven</div>
               <pre>{`<ThreadComposerProvider>
   <Composer.Dropzone />
   <Composer.Frame>
@@ -71,20 +65,20 @@ export function App() {
         </div>
         <div>
           <span className="metric-value">0</span>
-          <span className="metric-label">isEditingMessage props</span>
+          <span className="metric-label">editing mode flags</span>
         </div>
         <div>
           <span className="metric-value">1</span>
-          <span className="metric-label">shared primitive set</span>
+          <span className="metric-label">primitive set</span>
         </div>
       </section>
 
       <section className="section-heading" id="problem">
-        <p className="eyebrow">The trap</p>
-        <h2>Boolean props feel harmless until the component has to remember everything.</h2>
+        <p className="eyebrow">Problem</p>
+        <h2>The mess starts when props become product logic.</h2>
         <p>
-          The parent already knows the product shape. A monolith makes the child rediscover it with flags, branches, and
-          escape hatches.
+          The parent already knows the shape it wants. A monolith makes the child rediscover that shape through flags,
+          branches, and escape hatches.
         </p>
       </section>
 
@@ -95,22 +89,22 @@ export function App() {
 
       <section className="pattern-panel" id="pattern">
         <div className="pattern-copy">
-          <p className="eyebrow">The pattern</p>
-          <h2>Shared internals. Different trees.</h2>
+          <p className="eyebrow">Pattern</p>
+          <h2>Keep the primitives. Change the tree.</h2>
           <p>
-            The provider owns the state model. The frame, input, footer, dropzone, and action buttons stay small. Each
-            use case chooses the pieces it needs and leaves the rest out.
+            The provider owns the state model. The frame, input, footer, dropzone, and actions stay small. Each use case
+            chooses the pieces it needs and leaves the rest out.
           </p>
         </div>
         <div className="pattern-steps" aria-label="Composition pattern steps">
           <div>
             <span>01</span>
             <strong>Pick the state boundary</strong>
-            <p>Global channel drafts and local modal drafts use the same context shape.</p>
+            <p>Global channel drafts and local modal drafts share the same context shape.</p>
           </div>
           <div>
             <span>02</span>
-            <strong>Assemble the tree</strong>
+            <strong>Assemble the UI</strong>
             <p>Thread, edit, channel, and forward flows render different children.</p>
           </div>
           <div>
@@ -122,11 +116,11 @@ export function App() {
       </section>
 
       <section className="section-heading demos-heading" id="demos">
-        <p className="eyebrow">Composed internals</p>
+        <p className="eyebrow">Examples</p>
         <h2>The variants are visible in the markup.</h2>
         <p>
-          These four examples share the same primitives, but the shape of each UI is honest. Editing has no dropzone.
-          Forwarding lifts actions outside the frame. Threads get one extra checkbox instead of a new mode flag.
+          Editing has no dropzone. Forwarding lifts actions outside the frame. Threads get one extra checkbox instead of
+          a new mode flag.
         </p>
       </section>
 
@@ -181,7 +175,7 @@ export function App() {
       </section>
 
       <footer className="page-footer">
-        <p>Built from the talk notes in this repo. The code is deliberately small so the composition boundary stays easy to see.</p>
+        <p>Built from the talk notes in this repo. The code stays small so the composition boundary is easy to see.</p>
       </footer>
     </main>
   );
