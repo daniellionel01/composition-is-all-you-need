@@ -67,12 +67,3 @@ The edit variant does **not** pass `isEditingMessage` down the tree. It simply r
 
 The forward-message example demonstrates the talk's state-management point: the provider is lifted above both the composer frame and the external action row, so `ForwardActions` can call `actions.submit()` without pushing state up through effects or callback props.
 
-## Screenshot extraction
-
-The extracted images were generated from `../Composition_Is_All_You_Need.mp4` with FFmpeg. The selected timestamps live in `scripts/extract-screenshots.py` so the set can be regenerated or adjusted.
-
-```bash
-python3 scripts/extract-screenshots.py ../Composition_Is_All_You_Need.mp4 docs/slides
-```
-
-> Note: Screenshots are included for study/reference from the local video; verify licensing before redistributing them publicly.
