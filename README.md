@@ -1,25 +1,22 @@
-# Composition Is All You Need — practical React examples
+# Composition Is All You Need
 
-This repo reconstructs the code ideas from Fernando Rojo's React Universe 2025 talk **“Composition Is All You Need”**.
+A small React app based on Fernando Rojo's React Universe 2025 talk, "Composition Is All You Need."
 
-Watch the original talk: https://www.youtube.com/watch?v=4KvbVq3Eg5w
+Original talk: https://www.youtube.com/watch?v=4KvbVq3Eg5w
 
-The talk contrasts two approaches:
+The repo focuses on one part of the talk: composer UIs get easier to reason about when each variant renders its own tree. Instead of passing flags like `isThread`, `isEditingMessage`, or `renderSubmit` into one oversized component, the examples assemble small primitives in different ways.
 
-1. **Boolean-prop monoliths**: one component tries to handle every product variant with props like `isThread`, `isEditingMessage`, `isForwardingMessage`, `renderSubmit`, etc.
-2. **Composed primitives**: shared internals (`Provider`, `Frame`, `Input`, `Footer`, `Dropzone`, action buttons) are assembled into distinct component trees per use case.
+## What's in here
 
-## What is included
+- `src/examples/`: the flag-heavy API shape this is trying to avoid
+- `src/composer/`: shared primitives and context
+- `src/composers/`: the composed versions
+  - `ChannelComposer`: synced channel draft state
+  - `ThreadComposer`: channel composer plus `AlsoSendToChannel`
+  - `EditMessageComposer`: no dropzone, custom footer buttons
+  - `ForwardMessageDialog`: local state shared by the composer and buttons outside the frame
 
-- `src/examples/` — the anti-pattern examples from the opening of the talk.
-- `src/composer/` — reusable composer primitives and context.
-- `src/composers/` — practical implementations:
-  - `ChannelComposer` — synced/global draft state.
-  - `ThreadComposer` — same primitives plus `AlsoSendToChannel`.
-  - `EditMessageComposer` — no dropzone; custom footer buttons.
-  - `ForwardMessageDialog` — local/ephemeral state lifted above the composer frame so buttons outside the box can use the same actions.
-
-## Run it
+## Run it locally
 
 ```bash
 npm install
@@ -28,11 +25,13 @@ npm run dev
 
 ## Deploy
 
-This repo is configured for GitHub Pages. Push to `main` and the workflow in `.github/workflows/deploy.yml` builds the Vite app and publishes `dist/` to Pages.
+GitHub Pages is handled by `.github/workflows/deploy.yml`.
 
-The Vite build uses relative asset paths (`./assets/...`) so the generated `dist/index.html` works from the GitHub Pages project URL.
+Push to `main`, and the workflow builds the Vite app and publishes `dist/` to Pages. The Vite build uses relative asset paths (`./assets/...`) so `dist/index.html` works from the project page URL.
 
-## Key lesson mapped to code
+## The shape of the code
+
+A channel composer is just the pieces it needs:
 
 ```tsx
 <ChannelComposerProvider channelId="react-universe">
@@ -52,7 +51,7 @@ The Vite build uses relative asset paths (`./assets/...`) so the generated `dist
 </ChannelComposerProvider>
 ```
 
-The edit variant does **not** pass `isEditingMessage` down the tree. It simply renders a different tree:
+The edit version does not pass `isEditingMessage` down the tree. It renders a smaller tree:
 
 ```tsx
 <LocalComposerProvider supportsAttachments={false}>
@@ -73,5 +72,4 @@ The edit variant does **not** pass `isEditingMessage` down the tree. It simply r
 </LocalComposerProvider>
 ```
 
-The forward-message example demonstrates the talk's state-management point: the provider is lifted above both the composer frame and the external action row, so `ForwardActions` can call `actions.submit()` without pushing state up through effects or callback props.
-
+The forward-message example lifts the provider above both the composer frame and the external action row. That lets `ForwardActions` call `actions.submit()` without pushing state through effects or callback props.
