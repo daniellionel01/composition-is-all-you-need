@@ -23,12 +23,6 @@ npm install
 npm run dev
 ```
 
-## Deploy
-
-GitHub Pages is handled by `.github/workflows/deploy.yml`.
-
-Push to `main`, and the workflow builds the Vite app and publishes `dist/` to Pages. The Vite build uses relative asset paths (`./assets/...`) so `dist/index.html` works from the project page URL.
-
 ## The shape of the code
 
 A channel composer is just the pieces it needs:
