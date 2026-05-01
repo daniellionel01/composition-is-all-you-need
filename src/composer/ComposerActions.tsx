@@ -11,13 +11,18 @@ function ActionButton({ children, ...props }: ButtonHTMLAttributes<HTMLButtonEle
 
 export function PlusMenu() {
   const { actions } = useComposer();
-  return <ActionButton onClick={() => actions.attach(['demo-file.png'])}>＋</ActionButton>;
+  return (
+    <ActionButton aria-label="Attach demo file" onClick={() => actions.attach(['demo-file.png'])}>
+      ＋
+    </ActionButton>
+  );
 }
 
 export function TextFormat() {
   const { state, actions } = useComposer();
   return (
     <ActionButton
+      aria-label="Toggle formatting"
       aria-pressed={state.formattingOpen}
       onClick={() => actions.update({ formattingOpen: !state.formattingOpen })}
     >
@@ -28,20 +33,28 @@ export function TextFormat() {
 
 export function Emoji() {
   const { state, actions } = useComposer();
-  return <ActionButton onClick={() => actions.update({ body: `${state.body}🙂` })}>☺</ActionButton>;
+  return (
+    <ActionButton aria-label="Add a smile" onClick={() => actions.update({ body: `${state.body}🙂` })}>
+      ☺
+    </ActionButton>
+  );
 }
 
 export function Mention() {
   const { actions, state } = useComposer();
-  return <ActionButton onClick={() => actions.update({ body: `${state.body}@` })}>@</ActionButton>;
+  return (
+    <ActionButton aria-label="Insert mention" onClick={() => actions.update({ body: `${state.body}@` })}>
+      @
+    </ActionButton>
+  );
 }
 
 export function Voice() {
-  return <ActionButton>🎙</ActionButton>;
+  return <ActionButton aria-label="Record voice note">Mic</ActionButton>;
 }
 
 export function Video() {
-  return <ActionButton>▻</ActionButton>;
+  return <ActionButton aria-label="Attach video clip">Vid</ActionButton>;
 }
 
 export function Divider() {
@@ -50,7 +63,11 @@ export function Divider() {
 
 export function SlashCommands() {
   const { actions, state } = useComposer();
-  return <ActionButton onClick={() => actions.update({ body: `${state.body}/` })}>/</ActionButton>;
+  return (
+    <ActionButton aria-label="Insert slash command" onClick={() => actions.update({ body: `${state.body}/` })}>
+      /
+    </ActionButton>
+  );
 }
 
 export function CommonActions() {

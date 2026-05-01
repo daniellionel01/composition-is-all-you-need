@@ -9,6 +9,7 @@ export function ChannelComposer({ channelId }: { channelId: string }) {
       <Composer.Frame>
         <Composer.Header eyebrow="Synced draft" title={`Message #${channelId}`} />
         <Composer.Input placeholder={`Message #${channelId}`} />
+        <Composer.Attachments />
         <Composer.Footer>
           <Composer.FooterActions>
             <CommonActions />

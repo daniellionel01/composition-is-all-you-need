@@ -24,6 +24,7 @@ export function ThreadComposer({ channelId, threadId }: { channelId: string; thr
       <Composer.Frame>
         <Composer.Header eyebrow="Synced thread draft" title="Reply in thread" />
         <Composer.Input placeholder="Reply in thread" />
+        <Composer.Attachments />
         <AlsoSendToChannel channelId={channelId} />
         <Composer.Footer>
           <Composer.FooterActions>

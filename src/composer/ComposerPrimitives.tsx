@@ -35,6 +35,20 @@ function Input({ placeholder = 'Write a message...' }: { placeholder?: string })
   );
 }
 
+function Attachments() {
+  const { state } = useComposer();
+
+  if (state.attachments.length === 0) return null;
+
+  return (
+    <div className="composer-attachments" aria-label="Attached files">
+      {state.attachments.map((name, index) => (
+        <span key={`${name}-${index}`}>{name}</span>
+      ))}
+    </div>
+  );
+}
+
 function Footer({ children }: { children: ReactNode }) {
   return <footer className="composer-footer">{children}</footer>;
 }
@@ -88,6 +102,7 @@ export const Composer = {
   Frame,
   Header,
   Input,
+  Attachments,
   Footer,
   FooterActions,
   FooterSubmit,

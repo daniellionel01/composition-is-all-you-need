@@ -11,8 +11,8 @@ export function BooleanTrap() {
   isSlugRequired={false}
 />`}</pre>
       <p>
-        Each new product variant adds another optional prop. The parent already knows which tree it wants, but the child
-        has to branch everywhere.
+        Every new product variant adds one more switch. The parent already knows the shape it wants; the child gets stuck
+        branching through a maze.
       </p>
     </div>
   );

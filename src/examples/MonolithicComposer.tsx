@@ -24,8 +24,8 @@ export function MonolithicComposerExample() {
   renderSubmit={maybeCustomSubmit}
 />`}</pre>
       <p>
-        The implementation has to repeatedly ask the same questions: should it render a dropzone, which actions are
-        visible, where submit lives, and which state implementation should back it?
+        The implementation keeps asking the same questions: dropzone or not, which actions should show, where submit
+        lives, and whose state this is.
       </p>
     </div>
   );
