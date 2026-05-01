@@ -5,6 +5,50 @@ import { ThreadComposer } from './composers/ThreadComposer';
 import { EditMessageComposer } from './composers/EditMessageComposer';
 import { ForwardMessageDialog } from './composers/ForwardMessageDialog';
 
+const channelCode = `<ChannelComposerProvider channelId={channelId}>
+  <Composer.Dropzone />
+  <Composer.Frame>
+    <Composer.Header title={\`Message #\${channelId}\`} />
+    <Composer.Input />
+    <Composer.Footer>
+      <CommonActions />
+      <Composer.SubmitButton>Send</Composer.SubmitButton>
+    </Composer.Footer>
+  </Composer.Frame>
+</ChannelComposerProvider>`;
+
+const threadCode = `<ThreadComposerProvider channelId={channelId} threadId={threadId}>
+  <Composer.Dropzone />
+  <Composer.Frame>
+    <Composer.Header title="Reply in thread" />
+    <Composer.Input />
+    <AlsoSendToChannel channelId={channelId} />
+    <Composer.Footer>
+      <CommonActions />
+      <Composer.SubmitButton>Reply</Composer.SubmitButton>
+    </Composer.Footer>
+  </Composer.Frame>
+</ThreadComposerProvider>`;
+
+const editCode = `<LocalComposerProvider supportsAttachments={false}>
+  <Composer.Frame>
+    <Composer.Header title="Edit message" />
+    <Composer.Input />
+    <Composer.Footer>
+      <TextFormat />
+      <Emoji />
+      <button>Cancel</button>
+      <Composer.SubmitButton>Save</Composer.SubmitButton>
+    </Composer.Footer>
+  </Composer.Frame>
+</LocalComposerProvider>`;
+
+const forwardCode = `<LocalComposerProvider label="forward private message">
+  <ForwardMessageComposer />
+  <MessagePreview />
+  <ForwardActions />
+</LocalComposerProvider>`;
+
 export function App() {
   return (
     <main className="page">
@@ -105,10 +149,10 @@ export function App() {
 
       <section className="section-heading demos-heading" id="demos">
         <p className="eyebrow">Examples</p>
-        <h2>Four resulting composer trees.</h2>
+        <h2>The result, next to the code that produced it.</h2>
         <p>
-          Editing has no dropzone. Forwarding lifts actions outside the frame. Threads get one extra checkbox instead of
-          a new mode flag.
+          The demo is only useful if the composition is visible. Each composer sits beside the JSX shape that makes it
+          different.
         </p>
       </section>
 
@@ -121,7 +165,15 @@ export function App() {
               <h3>Channel composer</h3>
             </div>
           </div>
-          <ChannelComposer channelId="react-universe" />
+          <div className="demo-card-body">
+            <div className="demo-preview">
+              <ChannelComposer channelId="react-universe" />
+            </div>
+            <div className="demo-code" aria-label="Channel composer composition code">
+              <p>Composition code</p>
+              <pre>{channelCode}</pre>
+            </div>
+          </div>
         </article>
 
         <article className="demo-card demo-card--thread">
@@ -132,7 +184,15 @@ export function App() {
               <h3>Thread composer</h3>
             </div>
           </div>
-          <ThreadComposer channelId="react-universe" threadId="talk-prep" />
+          <div className="demo-card-body">
+            <div className="demo-preview">
+              <ThreadComposer channelId="react-universe" threadId="talk-prep" />
+            </div>
+            <div className="demo-code" aria-label="Thread composer composition code">
+              <p>Composition code</p>
+              <pre>{threadCode}</pre>
+            </div>
+          </div>
         </article>
 
         <article className="demo-card demo-card--edit">
@@ -143,11 +203,19 @@ export function App() {
               <h3>Edit message</h3>
             </div>
           </div>
-          <EditMessageComposer
-            messageId="m_123"
-            initialBody="I should prep my React Universe talk"
-            onCancel={() => window.alert('Cancelled edit')}
-          />
+          <div className="demo-card-body">
+            <div className="demo-preview">
+              <EditMessageComposer
+                messageId="m_123"
+                initialBody="I should prep my React Universe talk"
+                onCancel={() => window.alert('Cancelled edit')}
+              />
+            </div>
+            <div className="demo-code" aria-label="Edit message composer composition code">
+              <p>Composition code</p>
+              <pre>{editCode}</pre>
+            </div>
+          </div>
         </article>
 
         <article className="demo-card demo-card--forward">
@@ -158,7 +226,15 @@ export function App() {
               <h3>Forward message</h3>
             </div>
           </div>
-          <ForwardMessageDialog />
+          <div className="demo-card-body">
+            <div className="demo-preview">
+              <ForwardMessageDialog />
+            </div>
+            <div className="demo-code" aria-label="Forward message composition code">
+              <p>Composition code</p>
+              <pre>{forwardCode}</pre>
+            </div>
+          </div>
         </article>
       </section>
 
