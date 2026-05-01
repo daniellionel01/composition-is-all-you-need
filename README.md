@@ -30,7 +30,7 @@ npm run dev
 
 This repo is configured for GitHub Pages. Push to `main` and the workflow in `.github/workflows/deploy.yml` builds the Vite app and publishes `dist/` to Pages.
 
-The Vite build uses `/composition-is-all-you-need/` as its base path for the GitHub Pages project URL.
+The Vite build uses relative asset paths (`./assets/...`) so the generated `dist/index.html` works from the GitHub Pages project URL.
 
 ## Key lesson mapped to code
 
